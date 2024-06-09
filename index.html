@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Fan with CSS Animation</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        body{
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            background: #cfd0d0;
+            /* background: #e84545; */
+        }
+        .container{
+            width: 100%;
+            text-align: center;
+        }
+        .svg{
+            width: 90%;
+            margin: 0 auto;
+            overflow: hidden;
+            margin-top: 2rem;
+        }
+        img{
+            width: 30rem;
+            height: 30rem;
+        }
+        input[type=radio]{
+            width: 10px;
+            height: 10px;
+            cursor: pointer;
+            margin-left: 10px;
+            display: none;
+        }
+        label{
+            padding: 10px 20px;
+            border-radius: 5px;
+            font-weight: 700;
+            margin-left: 20px;
+            cursor: pointer;
+            box-shadow: 5px 5px 13px #b6b6b7, -5px -5px 13px #e8e9e9;
+        }
+        label:hover{
+            box-shadow: inset 5px 5px 13px #b6b6b7, -5px -5px 13px #e8e9e9;
+        }
+        .wings{
+            animation-iteration-count: infinite;
+            animation-timing-function: linear;
+        }
+        #stop:checked ~ .svg > .wings{
+            transform: rotate(0);
+        }
+        #low:checked ~ .svg > .wings{
+            animation-name: slow;
+            animation-duration: 1s;
+        }
+        @keyframes slow{
+            100%{
+                transform: rotate(-360deg);
+            }
+        }
+        #second:checked ~ .svg > .wings{
+            animation-name: mdm;
+            animation-duration: .5s;
+        }
+        @keyframes mdm{
+            100%{
+                transform: rotate(-360deg);
+            }
+        }
+        #third:checked ~ .svg > .wings{
+            animation-name: fast;
+            animation-duration: .1s;
+        }
+        @keyframes fast{
+            100%{
+                transform: rotate(-360deg);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <br><br>
+        <form style="margin-top: 10px;">
+            <input type="radio" id="stop" name="fan">
+            <label for="stop" id="stop_active">Stop</label>
+
+            <input type="radio" id="low" name="fan">
+            <label for="low" id="low_active">Low</label>
+
+            <input type="radio" id="second" name="fan">
+            <label for="second" id="mdm_active">Medium</label>
+
+            <input type="radio" id="third" name="fan">
+            <label for="third" id="high_active">High</label>
+
+            <div class="svg">
+                <img class="wings" src="./fan_blade.png" alt="fan_blade">
+            </div>
+        </form>
+    </div>
+</body>
+</html>
